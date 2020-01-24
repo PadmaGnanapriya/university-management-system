@@ -1,31 +1,30 @@
 package Lab_02;
-public class Student
-{
-    String val;
+public class Lecturer {
     private int id;
-    private String stdName;
+    private String name;
     private int age;
     private String username;
     private String password;
-    private String cource;
+    private String course;
 
-    public Student() {
+    public Lecturer() {
     }
 
-    public Student(int id, String stdName, int age, String username, String password, String cource) {
+    public Lecturer(int id, String name, int age, String username, String password, String course) {
         this.id = id;
-        this.stdName = stdName;
+        this.name = name;
         this.age = age;
         this.username = username;
         this.password = password;
-        this.cource = cource;
-    }
-    public String getCource() {
-        return cource;
+        this.course = course;
     }
 
-    public void setCource(String cource) {
-        this.cource = cource;
+    public String getCourse() {
+        return course;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
     }
 
     public int getId() {
@@ -52,12 +51,12 @@ public class Student
         this.password = password;
     }
 
-    public String getStdName() {
-        return stdName;
+    public String getName() {
+        return name;
     }
 
-    public void setStdName(String stdName) {
-        this.stdName = stdName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getAge() {
@@ -67,6 +66,5 @@ public class Student
     public void setAge(int age) {
         this.age = age;
     }
-
 
 }

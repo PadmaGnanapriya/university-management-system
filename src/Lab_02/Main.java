@@ -34,7 +34,6 @@ public class Main {
                 switch (sop) {
                     case 1:
                         System.out.println("Student Registration\n");
-
                         System.out.println("Please Submit following information");
                         System.out.println("Student ID:");
                         id = input.nextInt();
@@ -48,9 +47,9 @@ public class Main {
                         System.out.println("Password:");
                         password = input.next();
                         System.out.println("3: Select course number from following list,");
-                        System.out.println("[1] SENG1111 Introduction to Programming");
-                        System.out.println("[2] SENG1112 Fndamantales of Engineering");
-                        System.out.println("[3] SENG1113 Data Structures and Algorithms");
+                        System.out.println("[1] SENG 11111 - Introduction to Programming");
+                        System.out.println("[2] SENG 11112 - Fundamantales of Engineering");
+                        System.out.println("[3] SENG 11123 - Project Management");
                         subject=input.next();
                         Subject mod=new Subject();
                         String []val = subject.split(",");
@@ -60,8 +59,14 @@ public class Main {
                         student.setId(id);
                         student.setPassword(password);
                         student.setUsername(username);
+                        System.out.println("\nStudent Registration Completed");
+                        System.out.println("Name    : " + student.getStdName());
+                        System.out.println("Age     : " + student.getAge());
+                        System.out.print("Subject : " );
+
                         int i=0;
-                        System.out.println(val.length);
+                        //System.out.println("Length: ");
+                        //System.out.println(val.length);
                         PreparedStatement stm = connection.prepareStatement("Insert Into Student Values(?,?,?,?,?);");
 
                         stm.setObject(1, student.getId());
@@ -74,19 +79,21 @@ public class Main {
                         for(String ttr: val) {
                             int subId=Integer.parseInt(ttr);
                             mod.setId(subId);
-                            System.out.println(subId);
-
+                            //System.out.println(subId);
+                            if(subId==1)
+                                System.out.println("SENG 11111 - Introduction to Programming");
+                            else if(subId==2)
+                                System.out.println("SENG 11112 - Fundamantales of Engineering");
+                            else if(subId==3)
+                                System.out.println("SENG 11123 - Project Management");
                             PreparedStatement stmm = connection.prepareStatement("INSERT INTO studentSubject VALUES (?,?)");
                             stmm.setObject(1, mod.getId());
                             stmm.setObject(2, student.getId());
                             stmm.executeUpdate();
                             i++;
                         }
-
-                        System.out.println("Student Registration Completed");
-                        System.out.println("Name    :" + student.getStdName());
-                        System.out.println("Age     :" + student.getAge());
-                        break;
+                    System.out.println("\nThank you");
+                    break;
 
                     case 2:
                         System.out.println("Student Login form");
@@ -100,7 +107,7 @@ public class Main {
                         //ResultSet rst=stmt.executeQuery("SELECT subName from subject where id in (SELECT subId from std_sub where stdId=(Select id from student where username='"+username+"'and password='"+password+"'));");
                         ResultSet rs=stmt.executeQuery( "select * from Student where username='"+username+"'and password='"+password+"';");
                         while (rs.next()) {
-                            System.out.println( "Hi " + rs.getString(2));
+                            System.out.println( "\nHi " + rs.getString(2));
 
                         }
 
@@ -121,48 +128,69 @@ public class Main {
                 switch (sop) {
 
                     case 1:
-                        System.out.println("Lecturer Registration\n");
-                        System.out.println("Please Submit following information");
-                        System.out.println("Lecturer ID:");
-                        id = input.nextInt();
-                        System.out.println("1:  Name:");
-                        input.nextLine();
-                        name = input.nextLine();
-                        System.out.println("2:  Age:");
-                        age = input.nextInt();
-                        System.out.println("User name:");
-                        username = input.next();
-                        System.out.println("Password:");
-                        password = input.next();
-                        System.out.println("3: Select course number from following list,");
-                        System.out.println("[1] SENG1111 Introduction to Programming");
-                        System.out.println("[2] SENG1112 Fndamantales of Engineering");
-                        System.out.println("[3] SENG1113 Data Structures and Algorithms");
-                        subject=input.nextLine();
-                        input.nextLine();
-                        Subject mod=new Subject();
-                        String []val = subject.split(",");
-                        Lecturer lecturer = new Lecturer();
+                    System.out.println("Lecturer Registration\n");
+                    System.out.println("Please Submit following information");
+                    System.out.println("Lecturer ID:");
+                    id = input.nextInt();
+                    System.out.println("1:  Name:");
+                    input.nextLine();
+                    name = input.nextLine();
+                    System.out.println("2:  Age:");
+                    age = input.nextInt();
+                    System.out.println("User name:");
+                    username = input.next();
+                    System.out.println("Password:");
+                    password = input.next();
+                    System.out.println("3: Select course number from following list,");
+                    System.out.println("[1] SENG 11111 - Introduction to Programming");
+                    System.out.println("[2] SENG 11112 - Fundamantales of Engineering");
+                    System.out.println("[3] SENG 11123 - Project Management");
+                    subject=input.next();
+                    Subject mod=new Subject();
+                    String []val = subject.split(",");
+                    Lecturer lecturer=new Lecturer();
+                    lecturer.setAge(age);
+                    lecturer.setName(name);
+                    lecturer.setId(id);
+                    lecturer.setPassword(password);
+                    lecturer.setUsername(username);
+                    System.out.println("\nStudent Registration Completed");
+                    System.out.println("Name    : " + lecturer.getName());
+                    System.out.println("Age     : " + lecturer.getAge());
+                    System.out.print("Subject : " );
 
-                        lecturer.setName(name);
-                        lecturer.setAge(age);
-                        lecturer.setId(id);
-                        lecturer.setUsername(username);
-                        lecturer.setPassword(password);
-                        lecturer.setCourse(subject);
-                        PreparedStatement stm = connection.prepareStatement("Insert Into Lecturer Values(?,?,?,?,?,?);");
-                        stm.setObject(1, lecturer.getId());
-                        stm.setObject(2, lecturer.getName());
-                        stm.setObject(3, lecturer.getAge());
-                        stm.setObject(4, lecturer.getUsername());
-                        stm.setObject(5, lecturer.getPassword());
-                        stm.setObject(6, lecturer.getCourse());
-                        stm.executeUpdate();
-                        System.out.println("Lecturer Registration Completed");
-                        System.out.println("Name    :" + lecturer.getName());
-                        System.out.println("Age     :" + lecturer.getAge());
-                        System.out.println("Subject :" + sub.getSubName());
-                        break;
+                    int i=0;
+                    //System.out.println("Length: ");
+                    //System.out.println(val.length);
+                    PreparedStatement stm = connection.prepareStatement("Insert Into Lecturer Values(?,?,?,?,?,?);");
+
+                    stm.setObject(1, lecturer.getId());
+                    stm.setObject(2, lecturer.getName());
+                    stm.setObject(3, lecturer.getAge());
+                    stm.setObject(4, lecturer.getUsername());
+                    stm.setObject(5, lecturer.getPassword());
+                    stm.setObject(6, lecturer.getCourse());
+
+                    stm.executeUpdate();
+                    for(String ttr: val) {
+                        int subId=Integer.parseInt(ttr);
+                        mod.setId(subId);
+                        //System.out.println(subId);
+                        if(subId==1)
+                            System.out.println("SENG 11111 - Introduction to Programming");
+                        else if(subId==2)
+                            System.out.println("SENG 11112 - Fundamantales of Engineering");
+                        else if(subId==3)
+                            System.out.println("SENG 11123 - Project Management");
+                        PreparedStatement stmm = connection.prepareStatement("INSERT INTO studentSubject VALUES (?,?)");
+                        stmm.setObject(1, mod.getId());
+                        stmm.setObject(2, lecturer.getId());
+                        stmm.executeUpdate();
+                        i++;
+                    }
+                    System.out.println("\nThank you");
+                    break;
+
                     case 2:
                         System.out.println("Lecturer Login form");
 
@@ -175,8 +203,13 @@ public class Main {
                         ResultSet   rs=stmt.executeQuery( "select * from lecturer where username='"+username+"'and password='"+password+"';");
                         while (rs.next()) {
                             System.out.println( "Hi " + rs.getString(2));
-                            System.out.println("You have successfully registered for this course:");
-                            System.out.println(" "+rs.getString(6));
+                            //System.out.println("You have successfully registered for this course:");
+                            //System.out.println(" "+rs.getString(6));
+                        }
+                        ResultSet rst=stmt.executeQuery("SELECT course_code from course where course_id in (SELECT course from lecturer where username='"+username+"'and password='"+password+"');");
+                        System.out.println("You have successfully registered for this courses:");
+                        while(rst.next()){
+                            System.out.println(" "+rst.getString(1));
                         }
                         break;
                     default:

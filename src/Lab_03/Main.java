@@ -1,4 +1,4 @@
-package Lab_02;
+package Lab_03;
 
 import java.util.Scanner;
 import java.sql.*;
@@ -18,6 +18,10 @@ public class Main {
         Connection connection = Driver.getInstance().getConnection();
         Scanner input = new Scanner(System.in);
 
+        SignInUp obj=new SignInUp();
+        obj.setVisible(true);
+
+        /*
         System.out.println("Welcome to University Management System_2");
         System.out.println("");
         System.out.println("Please select an option to proceed");
@@ -217,7 +221,7 @@ public class Main {
                         if(kk==1)
                         {
                             System.out.println("\n Bye!");
-                            break;
+                            return;
                         }
                         else if(kk==2)
                         {
@@ -231,6 +235,8 @@ public class Main {
 
         }
         connection.close();
+
+         */
 
 
 

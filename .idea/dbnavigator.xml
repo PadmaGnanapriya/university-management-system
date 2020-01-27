@@ -25,8 +25,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="b7eb9388-d4a4-4501-a134-61eed395b5df">
-        <schema name="mysql" object-types="table" />
-        <schema name="university_management_system" object-types="column, view, table" />
+        <schema name="university_management_system" object-types="table, column" />
       </connection>
     </loaded-nodes>
   </component>
@@ -39,7 +38,9 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="b7eb9388-d4a4-4501-a134-61eed395b5df" />
+    <connection id="b7eb9388-d4a4-4501-a134-61eed395b5df">
+      <session name="Session 1" id="a75f7eb4-4e68-4c4d-b58f-c0ca36493897" />
+    </connection>
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />

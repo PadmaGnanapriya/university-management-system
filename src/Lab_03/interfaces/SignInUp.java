@@ -1,11 +1,14 @@
-package Lab_03;
+package Lab_03.interfaces;
+
+import Lab_03.Driver;
+import Lab_03.Student;
+import Lab_03.interfaces.Second_Form;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class SignInUp extends JFrame{

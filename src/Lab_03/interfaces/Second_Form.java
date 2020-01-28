@@ -1,4 +1,4 @@
-package Lab_03;
+package Lab_03.interfaces;
 
 import jdk.internal.org.objectweb.asm.tree.analysis.Value;
 

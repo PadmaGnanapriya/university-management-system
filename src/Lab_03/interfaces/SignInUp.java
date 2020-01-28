@@ -2,16 +2,16 @@ package Lab_03.interfaces;
 
 import Lab_03.Driver;
 import Lab_03.Student;
-import Lab_03.interfaces.Second_Form;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
+import java.sql.*;
 import java.sql.SQLException;
 import java.util.Scanner;
 
 public class SignInUp extends JFrame{
+    int role;
     String name;
     int age;
     String subject;
@@ -34,7 +34,8 @@ public class SignInUp extends JFrame{
     private JPanel mainPanel_Padme;
 
 
-    public SignInUp() throws SQLException, ClassNotFoundException {
+
+    public SignInUp(int role) throws SQLException, ClassNotFoundException {
         super("University Management System");
         this.setContentPane(this.mainPanel_Padme);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,8 +44,10 @@ public class SignInUp extends JFrame{
         signInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Second_Form obj2=new Second_Form();
+                //SgnIn button*********************
+                ShowDetails obj2=new ShowDetails();
                 obj2.setVisible(true);
+
 
             }
         });
@@ -76,7 +79,7 @@ public class SignInUp extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 //SHOW SECOND FORM
-                Second_Form obj2=new Second_Form();
+                ShowDetails obj2=new ShowDetails();
                 obj2.setVisible(true);
                 System.out.println("User Name:");
                 username = input.next();
@@ -84,6 +87,13 @@ public class SignInUp extends JFrame{
                 password = input.next();
 
 
+            }
+        });
+        signInButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // SignIn button action Listner.
+                setVisible(false);
             }
         });
     }

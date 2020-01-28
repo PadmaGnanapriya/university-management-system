@@ -7,11 +7,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Second_Form extends JFrame{
+public class ShowDetails extends JFrame{
     private JPanel secondMainPanel;
     private JButton exitButton;
 
-    public Second_Form()
+    public ShowDetails()
     {
         super("University Management System");
         this.setContentPane(this.secondMainPanel);

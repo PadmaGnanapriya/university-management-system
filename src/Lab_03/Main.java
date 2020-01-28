@@ -1,7 +1,6 @@
 package Lab_03;
 
 import Lab_03.interfaces.FirstForm;
-import Lab_03.interfaces.SignInUp;
 
 import java.util.Scanner;
 import java.sql.*;
@@ -21,10 +20,7 @@ public class Main {
         Connection connection = Driver.getInstance().getConnection();
         Scanner input = new Scanner(System.in);
 
-        SignInUp obj=new SignInUp();
-        obj.setVisible(true);
-
-        FirstForm firstForm=new FirstForm();
+        FirstForm firstForm= new FirstForm();
         firstForm.setVisible(true);
 
         System.out.println("Welcome to University Management System_2");

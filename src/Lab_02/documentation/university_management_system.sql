@@ -17,8 +17,8 @@ INSERT INTO `course` (`course_code`, `course_name`, `lecturer`, `course_id`) VAL
 ;
 
 CREATE TABLE `studentsubject` (
-  `course_id` varchar(10) NOT NULL,
-  `ids` int(11) NOT NULL
+  `course_id` int NOT NULL,
+  `ids` int NOT NULL
 );
 
 INSERT INTO `studentsubject` (`course_id`, `ids`) VALUES

@@ -77,7 +77,14 @@ public class SignInUp extends JFrame{
                     //this one open the window
                     JOptionPane.showMessageDialog(null,"Login Successful");
                     setVisible(false);
-                    AddDetails addDetails=new AddDetails(role,username,password);
+                    AddDetails addDetails= null;
+                    try {
+                        addDetails = new AddDetails(role,username,password);
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    } catch (ClassNotFoundException ex) {
+                        ex.printStackTrace();
+                    }
                     addDetails.setVisible(true);
                 }
                 else

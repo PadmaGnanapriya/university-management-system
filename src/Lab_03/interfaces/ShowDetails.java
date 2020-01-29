@@ -20,6 +20,7 @@ public class ShowDetails extends JFrame {
     private JLabel L_ID;
     private JLabel L_Age;
     private JButton exitButton;
+    private JTable table1;
     int role;
     String username;
     String password;
@@ -76,8 +77,12 @@ public class ShowDetails extends JFrame {
             }
         });
     }
+    //*************
+    
+    ///****************
         private void createUIComponents () {
             // TODO: place custom component creation code here
             Image_Lable = new JLabel(new ImageIcon("personIcon.jpg"));
+
         }
 }

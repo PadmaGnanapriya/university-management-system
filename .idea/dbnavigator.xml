@@ -25,7 +25,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="b7eb9388-d4a4-4501-a134-61eed395b5df">
-        <schema name="university_management_system" object-types="table, column" />
+        <schema name="university_management_system" object-types="function, column, table" />
       </connection>
     </loaded-nodes>
   </component>

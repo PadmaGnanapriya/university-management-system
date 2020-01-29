@@ -244,6 +244,12 @@ public class AddDetails extends JFrame{
                     }
 
                 }
+                textField_Age.setText("");
+                textField_Password.setText("");
+                textField_Username.setText("");
+                textField_FullName.setText("");
+                textField_ID.setText("");
+                JOptionPane.showMessageDialog(null,"Add new record Successfully");
             }
         });
 

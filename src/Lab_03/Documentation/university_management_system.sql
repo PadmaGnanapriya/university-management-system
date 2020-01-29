@@ -23,7 +23,18 @@ CREATE TABLE `studentsubject` (
 
 INSERT INTO `studentsubject` (`course_id`, `ids`) VALUES
 ('1', '2'),
-('2', '3');
+('1', '3'),
+('2', '2'),
+('3', '3'),
+('3', '1'),
+('4', '3'),
+('4', '1'),
+('5', '3'),
+('5', '2'),
+('6', '3'),
+('6', '2'),
+('7', '3')
+;
 
 CREATE TABLE `lecturer` (
   `ids` int(11) NOT NULL,
@@ -37,9 +48,10 @@ CREATE TABLE `lecturer` (
 
 
 INSERT INTO `lecturer` (`ids`, `name`, `age`, `username`, `password`, `course`) VALUES
-(11001, 'Dr. Nalin Warnajith', 0, 'nwarnajith', '123456', 'Data Structure'),
-(11002, 'Dr. Tiroshan Madushanka', 0, 'tiroshan', '123456', 'Object Oriented Programming'),
-(11003, 'Dr. Lankeshwara Munasinghe', 0, 'lmunasinghe', '123456', 'Statistics');
+(11001, 'Dr. Nalin Warnajith', 0, 'nwarnajith', '123456', '1'),
+(11002, 'Dr. Tiroshan Madushanka', 0, 'Tiroshan', '123456', '2'),
+(11003, 'Dr. Isuru Hewapathirana', 0, 'Isuru', '123456', '3'),
+(11004, 'Dr. Lankeshwara Munasinghe', 0, 'Munasinghe', '123456', '3');
 
 
 CREATE TABLE `student` (
@@ -53,12 +65,17 @@ CREATE TABLE `student` (
 
 
 INSERT INTO `student` (`ids`, `name`,`age`,`username`, `password`) VALUES
-(1, 'Nimal Karunarathna', 21, 'Nimal', '123456'),
-(2, 'Padma Gnanapriya',23, 'Padma', '123456'),
+(1, 'Padma Gnanapriya',23, 'Padma', '123456'),
+(2, 'Chintha Chathuranga', 21, 'Chinthaka', '123456'),
 (3, 'Pasindu Chinthana', 22, 'pasindu', '123456'),
-(4, 'Sunanda Karunajeewa', 24, 'sunanda', '123456');
+(4, 'Chamodi Jayodya',23, 'Chamodi', '123456'),
+(5, 'Bimali Karunageewa', 20, 'Bimali', '123456'),
+(6, 'Githmi Anjana', 22, 'Githmi', '123456'),
+(7, 'Sunanda Karunajeewa', 24, 'sunanda', '123456');
 
 
+ALTER TABLE `studentsubject`
+  ADD PRIMARY KEY (`course_id`, `ids`);
 
 
 ALTER TABLE `course`

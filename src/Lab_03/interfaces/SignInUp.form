@@ -107,7 +107,7 @@
               </grid>
             </constraints>
             <properties>
-              <text value="Padma"/>
+              <text value=""/>
             </properties>
           </component>
           <component id="8e095" class="javax.swing.JLabel">
@@ -133,7 +133,7 @@
               </grid>
             </constraints>
             <properties>
-              <text value="123456"/>
+              <text value=""/>
             </properties>
           </component>
           <component id="f6f02" class="javax.swing.JButton" binding="signInButton" default-binding="true">

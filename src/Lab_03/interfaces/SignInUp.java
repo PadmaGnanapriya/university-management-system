@@ -123,7 +123,7 @@ public class SignInUp extends JFrame{
                     {
                         JOptionPane.showMessageDialog(null,"Login Successful");
                         setVisible(false);
-                        ShowDetails obj2=new ShowDetails();
+                        ShowDetails obj2=new ShowDetails(role,username,password);
                         obj2.setVisible(true);
                     }
                     else
@@ -132,7 +132,7 @@ public class SignInUp extends JFrame{
                         textname1.setText("");
                         passwordField1.setText("");
                     }
-                } catch (SQLException ex) {
+                } catch (SQLException | ClassNotFoundException ex) {
                     ex.printStackTrace();
                 }
 

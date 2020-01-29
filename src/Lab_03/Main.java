@@ -235,6 +235,7 @@ public class Main {
                         System.out.println("\nThank you");
                         break;
 
+                    /*Lecturer signIn form*/
                     case 2:
                         System.out.println("Lecturer Login form");
                         System.out.println("User Name:");

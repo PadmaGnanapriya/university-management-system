@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class ShowDetails extends JFrame{
     private JPanel secondMainPanel;
@@ -19,5 +20,20 @@ public class ShowDetails extends JFrame{
         this.pack();
 
 
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                FirstForm firstForm= null;
+                try {
+                    firstForm = new FirstForm();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                } catch (ClassNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+                firstForm.setVisible(true);
+            }
+        });
     }
 }

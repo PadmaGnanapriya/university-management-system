@@ -32,6 +32,11 @@ public class SignInUp extends JFrame{
     private JPasswordField passwordField3;
     private JButton signUpButton;
     private JPanel mainPanel_Padme;
+    Statement stmt = connection.createStatement();
+    private JButton backButton;
+
+
+    //String usernam;
 
 
 
@@ -41,59 +46,113 @@ public class SignInUp extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
 
-        signInButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //SgnIn button*********************
-                ShowDetails obj2=new ShowDetails();
-                obj2.setVisible(true);
 
 
-            }
-        });
         signUpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-
                 username=textname2.getText();
-
                 String passText1 = new String(passwordField2.getPassword());
                 String passText2 = new String(passwordField3.getPassword());
+                boolean x=textname2.getText().isEmpty();
+                int y=1,z=0;
+                if(x==true)
+                    y=0;
+                System.out.println(x);
                 if(passText1.equals(passText2))
+                   z=1;
+                if(passText1.isEmpty())
+                    z=0;
+
+                if(y*z!=0)
                 {
                     //Deletethis and create pass to next form to fill this details
+                    //**********
+                    //*********
+                    //*******
                     password= String.valueOf(new String(passwordField3.getPassword()));
                     Student student = new Student();
                     student.setPassword(password);
                     student.setUsername(username);
                     //this one open the window
+                    JOptionPane.showMessageDialog(null,"Login Successful");
+                    setVisible(false);
+                    AddDetails addDetails=new AddDetails(role,username,password);
+                    addDetails.setVisible(true);
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null,"Not equal both password or empty username");
+                    passwordField3.setText("");
+                    passwordField2.setText("");
+                }
+
+            }
+        });
 
 
+
+        signInButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Sign In buttion
+
+                //**************
+                username=textname1.getText();
+                password= String.valueOf(passwordField1.getPassword());
+                String quary="";
+                if(role==1)
+                {
+                    quary="SELECT * from student where username='" + username + "'and password='" + password + "';";
+
+                }
+                else
+                {
+                    quary="SELECT * from lecturer where username='" + username + "'and password='" + password + "';";
+                }
+                try {
+                    ResultSet rs=stmt.executeQuery(quary);
+                    if(rs.next())
+                    {
+                        JOptionPane.showMessageDialog(null,"Login Successful");
+                        setVisible(false);
+                        ShowDetails obj2=new ShowDetails();
+                        obj2.setVisible(true);
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null,"Incorrect username or password");
+                        textname1.setText("");
+                        passwordField1.setText("");
+                    }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
                 }
 
 
-            }
-        });
-        signInButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //SHOW SECOND FORM
-                ShowDetails obj2=new ShowDetails();
-                obj2.setVisible(true);
-                System.out.println("User Name:");
-                username = input.next();
-                System.out.println("Password:");
-                password = input.next();
+                ///final output
 
+
+
+
+                //**********
 
             }
         });
-        signInButton.addActionListener(new ActionListener() {
+        backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // SignIn button action Listner.
                 setVisible(false);
+                FirstForm firstForm= null;
+                try {
+                    firstForm = new FirstForm();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                } catch (ClassNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+                firstForm.setVisible(true);
+
             }
         });
     }

@@ -12,6 +12,7 @@ import java.sql.SQLException;
 public class AddDetails extends JFrame{
     int role;
     String username,password;
+    int coursex;
     private JCheckBox SENG11111IntroductionToCheckBox;
     private JPanel addDetails;
     private JTextField textField_ID;
@@ -26,6 +27,7 @@ public class AddDetails extends JFrame{
     Connection connection = Driver.getInstance().getConnection();
     private JCheckBox SENG11112;
     private JCheckBox SENG11123;
+
 
     public AddDetails(int role,String username,String password) throws SQLException, ClassNotFoundException {
         super("University Management System");
@@ -186,6 +188,60 @@ public class AddDetails extends JFrame{
                 //role 2 for lecture
                 else
                 {
+
+
+                    PreparedStatement stm = null;
+                    try {
+                        stm = connection.prepareStatement("Insert Into Lecturer Values(?,?,?,?,?,?);");
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                    try {
+                        stm.setObject(1, textField_ID.getText());
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                    try {
+                        stm.setObject(2, textField_FullName.getText());
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                    try {
+                        stm.setObject(3, textField_Age.getText());
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                    try {
+                        stm.setObject(4, textField_Username.getText());
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                    try {
+                        stm.setObject(5, textField_Password.getText());
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+
+                    if(SENG11111IntroductionToCheckBox.isSelected()){
+                        coursex=1;
+                    }
+                    if(SENG11112.isSelected()){
+                        coursex=2;
+                    }
+                    if(SENG11123.isSelected()){
+                        coursex=3;
+                    }
+
+                    try {
+                        stm.setObject(6, coursex);
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                    try {
+                        stm.executeUpdate();
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
 
                 }
             }

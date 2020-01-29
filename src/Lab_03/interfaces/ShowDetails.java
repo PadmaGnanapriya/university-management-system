@@ -10,6 +10,11 @@ import java.sql.SQLException;
 
 public class ShowDetails extends JFrame{
     private JPanel secondMainPanel;
+    private JTabbedPane tabbedPane1;
+    private JLabel Image_Lable;
+    private JLabel L_name;
+    private JLabel L_ID;
+    private JLabel L_Age;
     private JButton exitButton;
 
     public ShowDetails()
@@ -20,20 +25,11 @@ public class ShowDetails extends JFrame{
         this.pack();
 
 
-        exitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                FirstForm firstForm= null;
-                try {
-                    firstForm = new FirstForm();
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                } catch (ClassNotFoundException ex) {
-                    ex.printStackTrace();
-                }
-                firstForm.setVisible(true);
-            }
-        });
+
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+        Image_Lable=new JLabel(new ImageIcon("personIcon.jpg"));
     }
 }

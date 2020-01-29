@@ -27,6 +27,7 @@ public class AddDetails extends JFrame{
     Connection connection = Driver.getInstance().getConnection();
     private JCheckBox SENG11112;
     private JCheckBox SENG11123;
+    private JLabel textFieldMessage;
 
 
     public AddDetails(int role,String username,String password) throws SQLException, ClassNotFoundException {
@@ -66,6 +67,17 @@ public class AddDetails extends JFrame{
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //******************
+                if(textField_ID.getText().equals("") || textField_FullName.getText().equals("")|| textField_Username.getText().equals("") || textField_Age.getText().equals("") || textField_Password.getText().equals(""))
+                {
+                    textField_ID.setText("");
+                    textField_FullName.setText("");
+                    textField_Username.setText(username);
+                    textField_Password.setText(password);
+                    textField_Age.setText("");
+                    JOptionPane.showMessageDialog(null,"Can't let any field as null");
+                }
+                //******************
                 //role 1 for student
                 if(role==1)
                 {
@@ -87,9 +99,22 @@ public class AddDetails extends JFrame{
                     }
                     try {
                         stm.setObject(3, textField_Age.getText());
+                        Integer.parseInt(textField_Age.getText());
                     } catch (SQLException ex) {
                         ex.printStackTrace();
                     }
+                    try
+                    {
+                        // checking valid integer using parseInt() method
+                        Integer.parseInt(textField_Age.getText());
+
+                    }
+                    catch (NumberFormatException ex)
+                    {
+                        textFieldMessage.setText("Please Enter interger value for age");
+                        textField_Age.setText("");
+                    }
+
                     try {
                         stm.setObject(4, textField_Username.getText());
                     } catch (SQLException ex) {
@@ -244,12 +269,19 @@ public class AddDetails extends JFrame{
                     }
 
                 }
-                textField_Age.setText("");
-                textField_Password.setText("");
-                textField_Username.setText("");
-                textField_FullName.setText("");
-                textField_ID.setText("");
+
                 JOptionPane.showMessageDialog(null,"Add new record Successfully");
+                setVisible(false);
+                FirstForm firstForm= null;
+                try {
+                    firstForm = new FirstForm();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                } catch (ClassNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+                firstForm.setVisible(true);
+
             }
         });
 
